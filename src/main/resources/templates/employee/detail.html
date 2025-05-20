@@ -89,7 +89,11 @@
           <div class="well">
             <!-- ここから上を編集する必要はありません -->
 
-            <form method="post" action="list.html">
+            <form
+              method="post"
+              th:action="@{/employee/update}"
+              th:object="${updateEmployeeForm}"
+            >
               <fieldset>
                 <legend>従業員情報</legend>
 
