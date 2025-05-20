@@ -43,7 +43,20 @@ public class EmployeeController {
     @GetMapping("/showDetail")
     public String showDetail(String id, Model model, UpdateEmployeeForm form) {
         Employee employee = employeeService.showDetail(Integer.parseInt(id));
+
+        form.setId(String.valueOf(employee.getId()));
+        form.setName(employee.getName());
+        form.setHireDate(employee.getHireDate());
+        form.setMailAddress(employee.getMailAddress());
+        form.setZipCode(employee.getZipCode());
+        form.setAddress(employee.getAddress());
+        form.setTelephone(employee.getTelephone());
+        form.setSalary(String.valueOf(employee.getSalary()));
+        form.setCharacteristics(employee.getCharacteristics());
+        form.setDependentsCount(String.valueOf(employee.getDependentsCount()));
+
         model.addAttribute("employee", employee);
+        model.addAttribute("updateEmployeeForm", form);
         return "employee/detail";
     }
 
@@ -57,9 +70,20 @@ public class EmployeeController {
     public String update(UpdateEmployeeForm form) {
         Integer id = Integer.parseInt(form.getId());
         Integer dependentsCount = Integer.parseInt(form.getDependentsCount());
+        Integer salary = Integer.parseInt(form.getSalary());
+
         // 扶養人数をsetし更新
         Employee employee = employeeService.showDetail(id);
+        employee.setName(form.getName());
+        employee.setHireDate(form.getHireDate());
+        employee.setMailAddress(form.getMailAddress());
+        employee.setZipCode(form.getZipCode());
+        employee.setAddress(form.getAddress());
+        employee.setTelephone(form.getTelephone());
+        employee.setSalary(salary);
+        employee.setCharacteristics(form.getCharacteristics());
         employee.setDependentsCount(dependentsCount);
+
         employeeService.update(employee);
         return "redirect:/employee/showList";
     }
