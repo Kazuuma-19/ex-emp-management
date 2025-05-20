@@ -42,7 +42,7 @@ public class EmployeeController {
      * @return 従業員詳細画面
      */
     @GetMapping("/showDetail")
-    public String showDetail(String id, Model model, UpdateEmployeeForm updateEmployeeForm) {
+    public String showDetail(String id, Model model, UpdateEmployeeForm form) {
         Employee employee = employeeService.showDetail(Integer.parseInt(id));
         model.addAttribute("employee", employee);
         return "employee/detail";
