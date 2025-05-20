@@ -29,7 +29,6 @@ public class EmployeeController {
      */
     @GetMapping("/showList")
     public String showList(Model model) {
-        // 従業員一覧を取得
         List<Employee> employeeList = employeeService.showList();
         model.addAttribute("employeeList", employeeList);
         return "employee/list";
