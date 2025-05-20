@@ -109,7 +109,7 @@
                     <td>
                       <img
                         th:if="${employee.gender == '男性'}"
-                        th:src="@{/img/e1.png}"
+                        th:src="@{/img/{image}(image=${employee.image})}"
                       />
                       <img
                         th:if="${employee.gender == '女性'}"
