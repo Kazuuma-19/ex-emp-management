@@ -44,6 +44,21 @@ public class EmployeeController {
     public String showDetail(String id, Model model, UpdateEmployeeForm form) {
         Employee employee = employeeService.showDetail(Integer.parseInt(id));
 
+        UpdateEmployeeForm filledForm = convertToUpdateEmployeeForm(employee);
+
+        model.addAttribute("employee", employee);
+        model.addAttribute("updateEmployeeForm", form);
+
+        return "employee/detail";
+    }
+
+    private UpdateEmployeeForm convertToUpdateEmployeeForm(Employee employee) {
+        String id = String.valueOf(employee.getId());
+        String salary = String.valueOf(employee.getSalary());
+        String dependentsCount = String.valueOf(employee.getDependentsCount());
+
+        UpdateEmployeeForm form = new UpdateEmployeeForm();
+
         form.setId(String.valueOf(employee.getId()));
         form.setName(employee.getName());
         form.setGender(employee.getGender());
@@ -56,9 +71,7 @@ public class EmployeeController {
         form.setCharacteristics(employee.getCharacteristics());
         form.setDependentsCount(String.valueOf(employee.getDependentsCount()));
 
-        model.addAttribute("employee", employee);
-        model.addAttribute("updateEmployeeForm", form);
-        return "employee/detail";
+        return form;
     }
 
     /**
