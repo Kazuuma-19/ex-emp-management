@@ -46,6 +46,7 @@ public class EmployeeController {
 
         form.setId(String.valueOf(employee.getId()));
         form.setName(employee.getName());
+        form.setGender(employee.getGender());
         form.setHireDate(employee.getHireDate());
         form.setMailAddress(employee.getMailAddress());
         form.setZipCode(employee.getZipCode());
@@ -75,6 +76,7 @@ public class EmployeeController {
         // 扶養人数をsetし更新
         Employee employee = employeeService.showDetail(id);
         employee.setName(form.getName());
+        employee.setGender(form.getGender());
         employee.setHireDate(form.getHireDate());
         employee.setMailAddress(form.getMailAddress());
         employee.setZipCode(form.getZipCode());

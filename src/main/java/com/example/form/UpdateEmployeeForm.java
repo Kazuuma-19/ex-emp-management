@@ -15,6 +15,7 @@ import java.util.Date;
 public class UpdateEmployeeForm {
     private String id;
     private String name;
+    private String gender;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date hireDate;
     private String mailAddress;
