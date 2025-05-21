@@ -47,7 +47,7 @@ public class EmployeeController {
         UpdateEmployeeForm filledForm = convertToUpdateEmployeeForm(employee);
 
         model.addAttribute("employee", employee);
-        model.addAttribute("updateEmployeeForm", form);
+        model.addAttribute("updateEmployeeForm", filledForm);
 
         return "employee/detail";
     }
